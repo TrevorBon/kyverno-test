@@ -1,7 +1,7 @@
 name: Test Kyverno Policies
 
 on:
-  push:
+  workflow_dispatch:
     branches: [ main ]
 jobs:
   test-kyverno-policies:
