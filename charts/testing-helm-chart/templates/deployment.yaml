@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
   labels:
-    app: {{ .Chart.Name }}
+    newapp: {{ .Chart.Name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   template:
