@@ -12,7 +12,7 @@ spec:
           kinds:
             - Deployment
       validate:
-        message: "All Deployments must have an 'app' label"
+        message: "All Deployments must have an 'app' label, cease and desist"
         pattern:
           metadata:
             labels:
