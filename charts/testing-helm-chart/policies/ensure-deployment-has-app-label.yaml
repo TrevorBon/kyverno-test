@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-app-label-for-deployments
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+    - name: check-app-label
+      match:
+        resources:
+          kinds:
+            - Deployment
+      validate:
+        message: "All Deployments must have an 'app' label"
+        pattern:
+          metadata:
+            labels:
+              app: "?*"
