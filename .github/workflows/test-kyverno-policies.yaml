@@ -1,0 +1,23 @@
+name: Test Kyverno Policies
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  test-kyverno-policies:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Helm
+      uses: azure/setup-helm@v1
+
+    - name: Test chart against Kyverno policies
+      uses: ckotzbauer/kyverno-test-action@v2
+      with:
+        chart-dir: charts/testing-helm-chart
+        value-files: |
+          charts/testing-helm-chart/values.yaml
+        policy-files: |
+          policies/ensure-deployment-has-app-label.yaml
